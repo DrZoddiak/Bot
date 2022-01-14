@@ -14,8 +14,18 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '9' }).setToken(token);
 console.log('Loading / Commands.');
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
-	.catch(console.error);
+(async () => {
+	try {
+		console.log('Started refreshing application (/) commands.');
 
-console.log(`Successfully reloaded commands: ${commands.map(it => it.name)}`);
+		await rest.put(
+			Routes.applicationGuildCommands(clientId, guildId),
+			{ body: commands },
+		);
+
+		console.log(`Successfully reloaded commands: ${commands.map(it => it.name)}`);
+	}
+	catch (error) {
+		console.error(error);
+	}
+})();
