@@ -1,6 +1,8 @@
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
+const Keyv = require('keyv');
+const { KeyvFile } = require('keyv-file');
 
 const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES,
@@ -9,6 +11,16 @@ const client = new Client({ intents: [
 	Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
 ],
 });
+
+//Storage handeling
+client.keyv = new Keyv({
+	store: new KeyvFile({
+		filename: './resources/quote-storage.json',
+		encode: JSON.stringify,
+		decode: JSON.parse,
+	}),
+});
+
 
 // Command Handling
 client.commands = new Collection();
