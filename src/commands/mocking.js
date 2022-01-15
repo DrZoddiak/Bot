@@ -9,7 +9,7 @@ module.exports = {
 				.setDescription('The message you want to mock')
 				.setRequired(true)),
 	async execute(interaction) {
-		const msg = interaction.options.getString('input');
+		const msg = interaction.options.getString('message');
 
 		const mockMsg = msg.split('').map((v) =>
 			Math.round(Math.random()) ? v.toUpperCase() : v.toLowerCase(),

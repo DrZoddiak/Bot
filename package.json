@@ -1,11 +1,12 @@
 {
-  "name": "bot",
+  "name": "zod-discord-bot",
   "version": "0.1.0",
   "description": "The Bot that powers Universium. ",
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
-    "loadCommands": "node src/deploy-commands.js"
+    "loadCommands": "node src/deploy-commands.js",
+    "updateRemote": "npm i zod-discord-bot"
   },
   "keywords": [
     "bot"
