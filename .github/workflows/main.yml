@@ -28,10 +28,6 @@ jobs:
         localDir: './'
         remoteDir: './'
         dry-run: true
-        exclude: |
-          .eslintrc.json
-          LICENSE
-          README.md
           
           
 
