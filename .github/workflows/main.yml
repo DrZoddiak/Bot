@@ -18,18 +18,9 @@ jobs:
         npm install
     
     - name: 📂 Sync files
-      uses: wangyucode/sftp-upload-action@v1.1
-
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
+        ftp-server: ${{ secrets.server }}
+        ftp-username: ${{ secrets.username }}
+        ftp-password: ${{ secrets.password }}
         git-ftp-args: --insecure
-        host: ${{ secrets.server }}
-        port: ${{ secrets.port }}
-        username: ${{ secrets.username }}
-        password: ${{ secrets.password }}
-        localDir: './'
-        remoteDir: './'
-        dryRun: true
-          
-          
-
-          
