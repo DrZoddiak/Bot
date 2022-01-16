@@ -21,6 +21,7 @@ jobs:
       uses: wangyucode/sftp-upload-action@v1.1
 
       with:
+        git-ftp-args: --insecure
         host: ${{ secrets.server }}
         port: ${{ secrets.port }}
         username: ${{ secrets.username }}
