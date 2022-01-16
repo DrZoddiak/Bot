@@ -2,5 +2,5 @@
   "clientId" : "725893559491887184",
   "guildId" : "",
   "channelId": "",
-  "token": ${{ BOT_KEY }}
+  "token": ${{ BOT_KEY }},
 }
