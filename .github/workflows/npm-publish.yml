@@ -17,6 +17,8 @@ jobs:
       run: |
         npm install
         npm run start
+        env: 
+          BOT_KEY: ${{ secrets.BOT_KEY }}
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
@@ -29,4 +31,7 @@ jobs:
           .eslintrc.json
           LICENSE
           README.md
+          
+          
+
           
