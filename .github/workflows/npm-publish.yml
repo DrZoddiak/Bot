@@ -23,7 +23,9 @@ jobs:
         server: ${{ secrets.server }}
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
+        protocol: ftps
         port: ${{ secrets.port }}
+        dry-run: true
         exclude: |
           .eslintrc.json
           LICENSE
