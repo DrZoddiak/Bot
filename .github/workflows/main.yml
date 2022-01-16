@@ -27,7 +27,7 @@ jobs:
         password: ${{ secrets.password }}
         localDir: './'
         remoteDir: './'
-        dry-run: true
+        dryRun: true
           
           
 
