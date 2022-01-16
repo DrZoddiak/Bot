@@ -18,13 +18,15 @@ jobs:
         npm install
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      uses: wangyucode/sftp-upload-action@v1.1
+
       with:
-        server: ${{ secrets.server }}
+        host: ${{ secrets.server }}
+        port: ${{ secrets.port }}
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
-        protocol: ftps-legacy
-        port: ${{ secrets.port }}
+        localDir: './'
+        remoteDir: './'
         dry-run: true
         exclude: |
           .eslintrc.json
