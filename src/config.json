@@ -1,6 +1,6 @@
 {
-  "clientId" : "",
+  "clientId" : "725893559491887184",
   "guildId" : "",
   "channelId": "",
-  "token": ""
+  "token": ${{ BOT_KEY }}
 }
