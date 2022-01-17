@@ -16,11 +16,13 @@ module.exports = {
 		const keyword = message.substr(0, message.indexOf(' '));
 		const quote = message.replace(keyword, '');
 
-		if (keyword.isEmpty || quote.trim().isEmpty) {
+		//Undefined or Null
+		if (typeof quote === 'undefined' && !quote) {
 			return interaction.reply({
 				content: 'Invalid usage of this command!', ephemeral: true,
 			});
 		}
+
 
 		await keyv.set(keyword, quote).then(
 			success => {
