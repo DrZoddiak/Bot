@@ -12,7 +12,7 @@ const client = new Client({ intents: [
 ],
 });
 
-//Storage handeling
+//Storage handling
 client.keyv = new Keyv({
 	store: new KeyvFile({
 		filename: './resources/quote-storage.json',
