@@ -18,7 +18,7 @@ module.exports = {
 		message.client.keyv.get(keyword).then((quote => {
 			message.reply(quote);
 		}, reason => {
-			message.reply({ content: reason, ephemeral: true });
+			message.reply(`quote \`${keyword}\` does not exist!`);
 		}));
 	},
 };
