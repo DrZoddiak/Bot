@@ -25,6 +25,7 @@ jobs:
         password: ${{ secrets.password }}
         protocol: ftp
         port: ${{ secrets.port }}
+        server-dir: "files/"
         dry-run: false
         exclude: |
           .eslintrc.json
