@@ -16,7 +16,7 @@ module.exports = {
 		const keyword = message.substr(0, message.indexOf(' '));
 		const quote = message.replace(keyword, '');
 
-		if (keyword.isEmpty || quote.isEmpty) {
+		if (keyword.isEmpty || quote.trim().isEmpty) {
 			return interaction.reply({
 				content: 'Invalid usage of this command!', ephemeral: true,
 			});
