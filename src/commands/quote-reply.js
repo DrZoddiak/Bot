@@ -25,10 +25,12 @@ module.exports = {
 		await keyv.set(keyword, quote).then(
 			success => {
 				return interaction.reply(`${keyword} has been added!`);
+			}, reason => {
+				return message.reply(`${keyword} does not exist`);
 			},
 		).catch(
 			reason => {
-				return message.reply(`${keyword} does not exist`);
+				return message.reply(`${reason} : reason`);
 			},
 		);
 	},
