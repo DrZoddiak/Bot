@@ -22,8 +22,10 @@ module.exports = {
 		message.client.keyv.get(keyword).then(
 			quote => {
 				return message.reply(quote);
-			}, reason => {
-				return message.reply(`quote \`${keyword}\` does not exist!`);
+			},
+		).catch(
+			reason => {
+				return message.reply(`${keyword} does not exist`);
 			},
 		);
 	},
