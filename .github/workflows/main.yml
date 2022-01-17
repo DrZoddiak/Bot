@@ -28,6 +28,9 @@ jobs:
         server-dir: "files/"
         dry-run: false
         exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
           .eslintrc.json
           LICENSE
           README.md
