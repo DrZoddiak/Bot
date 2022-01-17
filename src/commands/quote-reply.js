@@ -22,8 +22,12 @@ module.exports = {
 			});
 		}
 
-		await keyv.set(keyword, quote);
-
-		return interaction.reply(`${keyword} has been added!`);
+		await keyv.set(keyword, quote).then(
+			success => {
+				return interaction.reply(`${keyword} has been added!`);
+			}, error => {
+				return interaction.reply(`An error has occured. Reason: ${error}`);
+			},
+		);
 	},
 };
