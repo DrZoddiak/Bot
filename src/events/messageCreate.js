@@ -1,13 +1,17 @@
 module.exports = {
 	name: 'messageCreate',
 	execute(message) {
-		if (message.author.bot) {return;}
+		if (message.author.bot) {
+			return;
+		}
 
 		const content = message.content;
 
 		console.log(content);
 
-		if (!content.startsWith('!')) {return;}
+		if (!content.startsWith('!')) {
+			return;
+		}
 
 		console.log('Made it here');
 
@@ -15,10 +19,12 @@ module.exports = {
 
 		console.log(`keyword: ${keyword}`);
 
-		message.client.keyv.get(keyword).then((quote => {
-			message.reply(quote);
-		}, reason => {
-			message.reply(`quote \`${keyword}\` does not exist!`);
-		}));
+		message.client.keyv.get(keyword).then(
+			quote => {
+				return message.reply(quote);
+			}, reason => {
+				return message.reply(`quote \`${keyword}\` does not exist!`);
+			},
+		);
 	},
 };

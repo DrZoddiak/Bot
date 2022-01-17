@@ -26,7 +26,7 @@ module.exports = {
 			success => {
 				return interaction.reply(`${keyword} has been added!`);
 			}, error => {
-				return interaction.reply(`An error has occured. Reason: ${error}`);
+				return interaction.reply(`An error has occurred. Reason: ${error}`);
 			},
 		);
 	},
