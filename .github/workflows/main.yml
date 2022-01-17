@@ -23,7 +23,7 @@ jobs:
         server: ${{ secrets.server }}
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
-        protocol: ftps
+        protocol: ftp
         port: ${{ secrets.port }}
         dry-run: true
         exclude: |
