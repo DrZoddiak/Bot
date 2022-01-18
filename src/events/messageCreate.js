@@ -16,7 +16,7 @@ module.exports = {
 				},
 			).catch(
 				reason => {
-					return message.reply(reason);
+					return message.reply(`${keyword} was not a valid keyword`);
 				},
 			);
 		}
