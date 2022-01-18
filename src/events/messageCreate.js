@@ -21,7 +21,7 @@ module.exports = {
 			);
 		}
 		catch (e) {
-			return message.reply(e.message);
+			return message.reply(`Error: ${e.message}`);
 		}
 	},
 };
