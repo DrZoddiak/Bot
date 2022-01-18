@@ -3,8 +3,7 @@ const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const Keyv = require('keyv');
 const { KeyvFile } = require('keyv-file');
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
+const { MongoClient } = require('mongodb');
 
 const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES,
@@ -23,26 +22,29 @@ client.keyv = new Keyv({
 	}),
 });
 
-MongoClient.connect(url, function(err, db) {
-	if (err) throw err;
+async function main() {
+	const uri = 'mongodb://localhost:27017';
+	const dbClient = new MongoClient(uri);
+	try {
+		await dbClient.connect();
+		await listDatabases(dbClient);
+	}
+	catch (e) {
+		console.error(e);
+	}
+	finally {
+		await dbClient.close();
+	}
+}
 
-	const dbo = db.db('lemmy-bot');
+main().catch(console.error);
 
-	const quote = {
-		key : 'test',
-		quote : 'Test was a success!',
-	};
+async function listDatabases(dbClient) {
+	const databasesList = await dbClient.db().admin().listDatabases();
 
-	const collection = dbo.collection('quotes');
-
-	collection.insertOne(quote, function(err, res) {
-		if (err) throw err;
-		console.log(res.insertedId);
-		db.close();
-	});
-
-});
-
+	console.log('Databases:');
+	databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+}
 
 // Command Handling
 client.commands = new Collection();
