@@ -41,12 +41,6 @@ MongoClient.connect(url, function(err, db) {
 		db.close();
 	});
 
-	collection.findOne({}, function(err, result) {
-		if (err) throw err;
-		console.log(result.key);
-		db.close();
-	});
-
 });
 
 
