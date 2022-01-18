@@ -22,9 +22,15 @@ module.exports = {
 				content: 'Invalid usage of this command!', ephemeral: true,
 			});
 		}
+		try {
+			await keyv.set(keyword, quote);
+		}
+		catch
+		(e) {
+			return interaction.reply('silly goose');
+		}
 
-
-		await keyv.set(keyword, quote).then(
+		await keyv.set(keyword, quote, message).then(
 			success => {
 				return interaction.reply(`${keyword} has been added!`);
 			}, reason => {

@@ -2,7 +2,6 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const Keyv = require('keyv');
-const { KeyvFile } = require('keyv-file');
 const { MongoClient } = require('mongodb');
 
 const client = new Client({ intents: [
@@ -12,39 +11,8 @@ const client = new Client({ intents: [
 	Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
 ],
 });
-
 //Storage handling
-client.keyv = new Keyv({
-	store: new KeyvFile({
-		filename: './resources/quote-storage.json',
-		encode: JSON.stringify,
-		decode: JSON.parse,
-	}),
-});
-
-async function main() {
-	const uri = 'mongodb://localhost:27017';
-	const dbClient = new MongoClient(uri);
-	try {
-		await dbClient.connect();
-		await listDatabases(dbClient);
-	}
-	catch (e) {
-		console.error(e);
-	}
-	finally {
-		await dbClient.close();
-	}
-}
-
-main().catch(console.error);
-
-async function listDatabases(dbClient) {
-	const databasesList = await dbClient.db().admin().listDatabases();
-
-	console.log('Databases:');
-	databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-}
+client.keyv = new Keyv('mongodb://localhost:27017/lemmy-bot');
 
 // Command Handling
 client.commands = new Collection();
