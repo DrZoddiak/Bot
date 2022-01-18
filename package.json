@@ -19,7 +19,8 @@
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.5.1",
     "keyv": "^4.0.5",
-    "keyv-file": "^0.2.0"
+    "keyv-file": "^0.2.0",
+    "mongodb": "^4.3.0"
   },
   "devDependencies": {
     "eslint": "^8.6.0"

@@ -3,6 +3,8 @@ const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const Keyv = require('keyv');
 const { KeyvFile } = require('keyv-file');
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017/lemmy-bot';
 
 const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES,
@@ -19,6 +21,36 @@ client.keyv = new Keyv({
 		encode: JSON.stringify,
 		decode: JSON.parse,
 	}),
+});
+
+MongoClient.connect(url, function(err, db) {
+	if (err) throw err;
+
+	const dbo = db.db('lemmy-bot');
+	dbo.createCollection('quotes', function(err, res) {
+		if (err) throw err;
+		db.close();
+	});
+
+	const quote = {
+		key : 'test',
+		quote : 'Test was a success!',
+	};
+
+	const collection = dbo.collection('quotes');
+
+	collection.insertOne(quote, function(err, res) {
+		if (err) throw err;
+		console.log(res.insertedId);
+		db.close();
+	});
+
+	collection.findOne({}, function(err, result) {
+		if (err) throw err;
+		console.log(result.key);
+		db.close();
+	});
+
 });
 
 
