@@ -4,7 +4,7 @@ const { token } = require('./config.json');
 const Keyv = require('keyv');
 const { KeyvFile } = require('keyv-file');
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/lemmy-bot';
+const url = 'mongodb://localhost:27017';
 
 const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES,
