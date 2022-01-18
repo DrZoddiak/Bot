@@ -27,10 +27,6 @@ MongoClient.connect(url, function(err, db) {
 	if (err) throw err;
 
 	const dbo = db.db('lemmy-bot');
-	dbo.createCollection('quotes', function(err, res) {
-		if (err) throw err;
-		db.close();
-	});
 
 	const quote = {
 		key : 'test',
